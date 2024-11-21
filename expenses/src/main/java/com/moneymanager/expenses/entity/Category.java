@@ -1,21 +1,23 @@
 package com.moneymanager.expenses.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
 @NoArgsConstructor
+@AllArgsConstructor
 @Data
 @Table(name="category")
 public class Category {
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
 	private String name;
 	
-	
+//	@ManyToOne(cascade = CascadeType.PERSIST)
+//	private User user;
 
 }

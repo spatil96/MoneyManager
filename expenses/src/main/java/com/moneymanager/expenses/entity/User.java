@@ -9,11 +9,11 @@ import lombok.*;
 @AllArgsConstructor
 @Entity
 @Data
-@Table(name="user")
+@Table(name="users")
 public class User {
 
 	@Id
-	private String id;
+	private Long id;
 	
 	private String  name;
 	
