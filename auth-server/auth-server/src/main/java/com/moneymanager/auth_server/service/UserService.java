@@ -9,4 +9,9 @@ public interface UserService {
     User save(User user);
 //    User get(String user);
 //    public Optional<User> findById(Long Id);
+
+
+    User saveOrUpdate(User user);
+    Optional<User> findByEmail(String email);
+    void updateLogoutTime(String email);
 }

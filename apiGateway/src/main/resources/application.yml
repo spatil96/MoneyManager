@@ -1,0 +1,16 @@
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: user_service
+          uri: http://localhost:8081
+          predicates:
+            - Path=/user/**
+      default-filters:
+        - TokenRelay # Passes the token to downstream services
+
+    security:
+      oauth2:
+        resourceserver:
+          jwt:
+            jwk-set-uri: http://localhost:8083/oauth/token_key # Auth Server's JWKS endpoint

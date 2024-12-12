@@ -9,7 +9,7 @@ class Category extends Component {
     }
  
     async componentDidMount(){
-        const response=await fetch('/api/categories');
+        const response=await fetch('http://localhost:8083/api/categories');
         const body = await response.json();
         this.setState({Categories : body , isLoading: false});
     }

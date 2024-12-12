@@ -4,16 +4,16 @@ import SidePanel from '../SidePanel/SidePanel';
 const Dashboard = () => {
   const [user, setUser] = useState(null);
   useEffect(() => {
-    axios.get('http://localhost:8080/user-info', {withCredentials: true})
-      .then(response => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get('http://localhost:8083/user-info', { withCredentials: true }); // API Gateway URL
         setUser(response.data);
-        console.log(user);
-      })
-      .catch(error => {
+      } catch (error) {
         console.error('Error fetching user data:', error);
-      });
+      }
+    };
+    fetchData();
   }, []);
-
   return (
     <div className="dashboard-container">
       <SidePanel user={user} />
@@ -22,9 +22,9 @@ const Dashboard = () => {
         <h1>Dashboard</h1>
         {user ? (
           <div>
-            <h3>Expenses</h3>
-            <h3>Income</h3>
-            <h3>Balance</h3>
+            <h3>Expenses : {user.expense}</h3>
+            <h3>Income : {user.income}</h3>
+            <h3>Balance: {user.total}</h3>
           </div>
         ) : (
           <p>fetching...</p>
